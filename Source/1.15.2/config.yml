@@ -1,0 +1,49 @@
+
+      ####################################################
+      #    ___           _   _    ___ _           _      #
+      #   |   \ ___ __ _| |_| |_ / __| |_  ___ __| |_    #
+      #   | |) / -_) _` |  _| ' \ (__| ' \/ -_|_-<  _|   #
+      #   |___/\___\__,_|\__|_||_\___|_||_\___/__/\__|   #
+      #                                                  #
+      ####################################################
+     
+     
+     
+# ---------- What follows is a configuration example. Do not uncomment it. -----------
+#  DO NOT TOUCH THIS VALUE IF YOU DO NOT KNOW WHAT IT DOES. MODIFYING IT COULD CAUSE ERRORS.
+#  config: 1.0.2
+#  The block to be used as a crate.
+#  NOTE:
+#  Please use the block names here:
+#  https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+#  And make the names ALL CAPS and replace spaces with underscores, just as you can see in the example below.
+#  crate-block: "SEA_LANTERN"
+#  This value affects how much time will have to pass until a DeathChest disappears. This value is expressed in ticks (1/20th of a second under normal circumstances)
+#  lifespan-ticks: 12000
+#  This value represents the size of the Inventory of the chest. Modifying is strongly discouraged unless you know what you are doing.
+#  crate-size: 45
+#  This value enables or disables the holograms on top of the DeathChests. Disabling it may reduce lag slightly, but will most likely have no noticeable impact.
+#  Possible values: true OR false
+#  holo: true
+#  This value represents whether or not the player that died will receive a message, specified on messages --> p-msg
+#  Possible values: true OR false
+#  msg-player: true
+#  This value represents whether or not to broadcast a message to the whole server, specified on messages --> bc-msg
+#  Possible values: true OR false
+#  bc-msg: false
+#  This value represents whether or not to send a message to all players with the permission below. Message specified on messages --> staff-msg
+#  Possible values: true OR false
+#  msg-staff: true
+#  All players with this permission will receive a message if the msg-staff module is enabled
+#  staff-perm: "deathchest.staff"
+# ---------- End of configuration example. Configuration file starts here. -----------
+config: 1.0.2
+crate-block: "SEA_LANTERN"
+lifespan-ticks: 12000
+crate-size: 45
+holo: true
+msg-player: true
+bc-msg: false
+msg-staff: true
+staff-perm: "deathchest.staff"
+ 
