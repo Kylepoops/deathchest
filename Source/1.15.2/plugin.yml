@@ -1,5 +1,5 @@
-version: 0.2
+version: 0.3
 name: DeathChest
 main: net.p24dev.deathchest.Main
 author: P24
-description: Place customizable DeathChests when a player dies with their items inside!
+description: Place customizable DeathChests when a player dies with their items inside!\
