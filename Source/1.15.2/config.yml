@@ -6,38 +6,100 @@
       #   |___/\___\__,_|\__|_||_\___|_||_\___/__/\__|   #
       #                                                  #
       ####################################################
-     
-     
-     
+
+#                           By P24
+      
+      
 # ---------- What follows is a configuration example. Do not uncomment it. -----------
+
 #  DO NOT TOUCH THIS VALUE IF YOU DO NOT KNOW WHAT IT DOES. MODIFYING IT COULD CAUSE ERRORS.
-#  config: 1.0.2
-#  The block to be used as a crate.
+#  config: 1.0.3
+
+#  The block to be used as a crate. 
 #  NOTE:
 #  Please use the block names here:
 #  https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
 #  And make the names ALL CAPS and replace spaces with underscores, just as you can see in the example below.
 #  crate-block: "SEA_LANTERN"
+
 #  This value affects how much time will have to pass until a DeathChest disappears. This value is expressed in ticks (1/20th of a second under normal circumstances)
 #  lifespan-ticks: 12000
+
 #  This value represents the size of the Inventory of the chest. Modifying is strongly discouraged unless you know what you are doing.
 #  crate-size: 45
+
 #  This value enables or disables the holograms on top of the DeathChests. Disabling it may reduce lag slightly, but will most likely have no noticeable impact.
 #  Possible values: true OR false
 #  holo: true
+
 #  This value represents whether or not the player that died will receive a message, specified on messages --> p-msg
 #  Possible values: true OR false
 #  msg-player: true
+
 #  This value represents whether or not to broadcast a message to the whole server, specified on messages --> bc-msg
 #  Possible values: true OR false
 #  bc-msg: false
+
 #  This value represents whether or not to send a message to all players with the permission below. Message specified on messages --> staff-msg
 #  Possible values: true OR false
 #  msg-staff: true
+
 #  All players with this permission will receive a message if the msg-staff module is enabled
 #  staff-perm: "deathchest.staff"
+
+# ------------------------------    Messages Section    ------------------------------
+# The prefix to use when sending messages:
+# prefix: "&a[DeathChest]"
+
+# The string to add to staff messages
+# staff-prefix: " - STAFF MESSAGE"
+# The default string will result in the prefix being "&a[DeathChest] - STAFF MESSAGE"
+
+# This is the text to be used in place of %tpmsg%. This text will teleport you to the crates location on click
+# tpmsg-text: "&6TP to DeathChest`s location"
+
+# This is the name to give to the crate. The following placeholders are supported:
+# %plrnm% --> The name of the player who died
+# More placeholders coming soon!
+# crate-name: "&a%plrnm%`s DeathChest"
+
+# This is the name to give to the hologram that appears above the chest. Same placeholders as above.
+# holo-name: "&a%plrnm%`s DeathChest"
+
+# This is the message that will be sent to the player who died. The following placeholders are supported:
+# %plrnm% --> The name of the player who died
+# %loc% --> The location of the crate in the following format: X:[x], Y:[y], Z: [z] {Placeholders %x%, %y% and %z% also supported}
+# %time% --> The time, in minutes or seconds, that the player has until their deathchest is deleted.
+# %tpmsg% --> clickable text that will teleport the player to their deathchests location.[WARNING: This module will output to the console when it is clicked. Do not use it to prevent console spam. Fix for this coming soon]
+# player-message: "&eYour DeathChest has been placed. Hurry up, or it will be removed!"
+
+# The message sent to players with the permission defined in config.yml. The following placeholders are supported:
+# %plrnm% --> The name of the player who died
+# %loc% --> The location of the crate in the following format: X:[x], Y:[y], Z: [z] {Placeholders %x%, %y% and %z% also supported}
+# %time% --> The time, in minutes or seconds, that the player has until their deathchest is deleted.
+# %tpmsg% --> Clickable text that will teleport the player to their deathchests location.[WARNING: This module will output to the console when it is clicked. Do not use it to prevent console spam. Fix for this coming soon]
+# staff-message:  "&e%plrnm%`s DeathChest was placed in %loc%. %tpmsg%"
+
+# The message broadcasted to the entire server. The following placeholders are supported:
+# %plrnm% --> The name of the player who died
+# %loc% --> The location of the crate in the following format: X:[x], Y:[y], Z: [z] {Placeholders %x%, %y% and %z% also supported}
+# %time% --> The time, in minutes or seconds, that the player has until their deathchest is deleted.
+# %tpmsg% --> clickable text that will teleport the player to their deathchests location.[WARNING: This module will output to the console when it is clicked. Do not use it to prevent console spam. Fix for this coming soon]
+# bc-message:  "&e%plrnm%`s DeathChest was placed in %loc%. Hurry up, or it will be removed!"
+# ---------------------------    End of Messages Section   ---------------------------
+
+# This determines whether the plugin remove unhnown text between % signs, or leave them on the final message. Example:
+# message: %text% other text
+# if TRUE output will be: %text% other text
+# if FALSE output will be: other text
+# keep-unknown-placeholders: false
+
+# This determines whether or not to use prefixes. 
+# use-prefix: true
+ 
 # ---------- End of configuration example. Configuration file starts here. -----------
-config: 1.0.2
+
+config: 1.0.3
 crate-block: "SEA_LANTERN"
 lifespan-ticks: 12000
 crate-size: 45
@@ -46,4 +108,13 @@ msg-player: true
 bc-msg: false
 msg-staff: true
 staff-perm: "deathchest.staff"
- 
+prefix: "&a[DeathChest]"
+staff-prefix: "&a - STAFF MESSAGE"
+tpmsg-text: "&6TP to DeathChest`s location"
+crate-name: "&a%plrnm%`s DeathChest"
+holo-name: "&a%plrnm%`s DeathChest"
+player-message: "&eYour DeathChest has been placed. Hurry up, or it will be removed!"
+staff-message:  "&e%plrnm%`s DeathChest was placed in X:%x%, Y:%y%, Z:%z%. %tpmsg%"
+bc-message:  "&e%plrnm%`s DeathChest was placed in %loc%. Hurry up, or it will be removed!"
+keep-unknown-placeholders: false
+use-prefix: true
