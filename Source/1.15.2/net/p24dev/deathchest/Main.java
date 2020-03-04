@@ -17,17 +17,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements Listener{
 	private ArrayList<DChest> chests = new ArrayList<>();
-
 	private int size;
 	private int wait;
 	private String staffPerm;
 	private Material cMat;
-	private Boolean holo, msgPlayer, broadcastMsg, msgStaff;
+	private Boolean holo, msgPlayer, broadcastMsg, msgStaff, keepUnknownPlaceholders, prefixUsed;
+	private String prefix, staffPrefix, tpmessageText, crateName, holoName, playerMessage, staffMessage, bcMessage;
 	@Override
 	public void onEnable() {
 		Bukkit.getPluginManager().registerEvents(this, this);
-		this.getConfig().options().copyDefaults();
-		saveDefaultConfig();
+
 		loadConfig();
 	}
 	@Override
@@ -43,10 +42,15 @@ public class Main extends JavaPlugin implements Listener{
 		}
 		
 		e.getDrops().clear();
-		chests.add(new DChest(e, size, wait, cMat, holo, msgPlayer, broadcastMsg, msgStaff, staffPerm));
+		chests.add(new DChest(e, size, wait, cMat, holo, msgPlayer, broadcastMsg, msgStaff, staffPerm, prefix, staffPrefix, tpmessageText, crateName, holoName, playerMessage, staffMessage, bcMessage, keepUnknownPlaceholders, prefixUsed));
 		
 	}
 	public void loadConfig() {
+		if(this.getConfig().getString("config-version") != "1.0.3") {
+			this.getConfig().options().copyDefaults();
+			saveDefaultConfig();
+			this.getConfig().set("config-version", "1.0.3");
+		}
 		wait = this.getConfig().getInt("lifespan-ticks");
 		size = this.getConfig().getInt("crate-size");
 		holo = this.getConfig().getBoolean("holo");
@@ -56,7 +60,16 @@ public class Main extends JavaPlugin implements Listener{
 		staffPerm = this.getConfig().getString("staff-perm");
 		String matStr = this.getConfig().getString("crate-block");
 		cMat = Material.getMaterial(matStr);
-		
+		prefix = this.getConfig().getString("prefix");
+		staffPrefix = this.getConfig().getString("staff-prefix");
+		tpmessageText = this.getConfig().getString("tpmessage-text");
+		crateName = this.getConfig().getString("crate-name");
+		holoName = this.getConfig().getString("holo-name");
+		playerMessage = this.getConfig().getString("player-message");
+		staffMessage = this.getConfig().getString("staff-message"); 
+		bcMessage = this.getConfig().getString("bc-message");
+		keepUnknownPlaceholders = this.getConfig().getBoolean("keep-unknown-placeholders");
+		prefixUsed = this.getConfig().getBoolean("use-prefix");
 		
 	}
 	@EventHandler
@@ -79,6 +92,7 @@ public class Main extends JavaPlugin implements Listener{
 							    }
 							}
 							chests.get(i).inv.clear();
+							chests.get(i).cancelTask();
 							chests.get(i).restore();
 							chests.remove(i);
 							

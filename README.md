@@ -44,4 +44,3 @@ This plugin is currently on a BETA stage, which means it is not fully completed 
 ### Contributors
 
 See the full list of [contributors](https://github.com/P24dev/deathchest/contributors) who participated in this project.
-
